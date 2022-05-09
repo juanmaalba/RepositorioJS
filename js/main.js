@@ -1,5 +1,8 @@
 // Simulador de cuotas sobre tarjeta de credito 
 
+//  Usuario: JuanAlba
+//  Contraseña: 1234
+
 // Ingresar al usuario y contraseña
 
 const usuario = prompt('Ingresar nombre de usuario:')
@@ -20,24 +23,33 @@ else{
     const psw = prompt('Vuelve a ingresar contraseña:')
 }
 
-// Menu  
-//HACER FUNCION DE MENU PARA NO REPETIR CODIGO
+//MENU
+
 let opcion = Number(prompt(`Ingrese el numero de opcion que desea:
-                                        1. Imprimir resumen tarjeta
-                                        2. Calcular nueva compra
-                                        3.  `))
+1. Imprimir resumen tarjeta
+2. Calcular nueva compra
+3. Salir `))
 
-if (opcion=== 1){
-
+if (opcion === 1){
+    alert('No existen resumenes en estos momentos.')
 }
 else if (opcion===2){
-
+    nuevaCompra();
+    breack
 }
 else if (opcion===3){
-        
+    breack
 }
 else {
     alert(`Opcion invalida, inserte un numero que 
             se encuentre dentro del menu.`)
 }
 // calculo de nueva compra
+
+function nuevaCompra(){
+    let precio = Number(prompt('Ingrese monto de compra:'))
+    let cuotas = Number(prompt('Ingrese cantidad de cuotas:'))
+    let recargo = Number(prompt('Ingrese % recargo de compra:'))
+    let resultado = (precio*(1.+(recargo/100)))/ cuotas
+    alert (resultado)
+}
