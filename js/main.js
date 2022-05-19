@@ -3,7 +3,6 @@
 //  Usuario: JuanAlba
 //  Contraseña: 1234
 
-// Ingresar al usuario y contraseña
 class Banco{
     constructor(id,nombre)
     {
@@ -11,23 +10,28 @@ class Banco{
         this.nombre = nombre
     }
 }
-const bancos = [];
+const banco1 = new Banco(1, "Galicia")
+const banco2 = new Banco(2, "Macro")
+const banco3 = new Banco(3,"Nacion")
+
+const bancos = [banco1,banco2,banco3];
+
 
 mostrarMenuBancos();
-
 
 function mostrarMenuBancos()
 {
     seleccion = 0
-    while(seleccion!== 6)
+    while(seleccion !== 7)
     {
-        let seleccion = Number(prompt(`Seleccione una opcion de banco a trabajar:
+        seleccion = Number(prompt(`Seleccione una opcion de banco a trabajar:
         1. Agregar banco
-        2. Eliminar banco
-        3. Modificar bancos
-        4. Listar bancos
-        5. Ingresar a sistema
-        6. Salir`))
+        2. Buscar banco
+        3. Eliminar banco
+        4. Modificar bancos
+        5. Listar bancos
+        6. Ingresar a sistema
+        7. Salir`))
 
         switch(seleccion)
         {
@@ -38,33 +42,37 @@ function mostrarMenuBancos()
                 }
             case 2:
                 {
-                    eliminarBanco();
+                    buscarBanco();
                     break;
                 }
             case 3:
                 {
-                    modificarBanco();
+                    eliminarBanco();
                     break;
                 }
             case 4:
                 {
-                    listarBancos();
+                    modificarBanco();
                     break;
                 }
             case 5:
+                {
+                    listarBancos();
+                    break;
+                }
+            case 6:
                 {
                     ingresarSistema();
                     break;
                 }
             default:
                 {
-                    alert('Opcion Invalida')
+                    alert("Opcion Invalida")
                     break;
                 }
         }
 
     }
-    
     
 }
 //                    FUNCIONES                        //
@@ -79,13 +87,39 @@ function agregarBanco()
     
 }
 
-function nuevaCompra(){
-    let precio = Number(prompt('Ingrese monto de compra:'))
-    let cuotas = Number(prompt('Ingrese cantidad de cuotas:'))
-    let recargo = Number(prompt('Ingrese % recargo de compra:'))
-    let resultado = (precio*(1.+(recargo/100)))/ cuotas
-    alert (resultado)
+
+function buscarBanco(){
+    
 }
+
+
+function eliminarBanco(){
+    let id = Number(prompt('Ingrese el id a eliminar:'))
+    let encontrado = bancos.find((banco)=>banco.id === id)
+    if(!encontrado)
+    {
+        alert('Banco no encontrado')
+    }
+    else{
+        let index = bancos.indexOf(encontrado) // capturar indice
+        bancos.splice(index,1) // 1 elemento
+
+    }
+}
+
+
+function modificarBanco(){
+
+}
+
+
+function listarBancos(){
+    bancos.forEach(banco => {
+        console.log(banco)
+    });
+}
+
+
 function ingresarSistema()
 {   
     const usuario = prompt('Ingresar nombre de usuario:')
@@ -107,7 +141,8 @@ function ingresarSistema()
                 opcion = Number(prompt(`Ingrese el numero de opcion que desea:
                 1. Imprimir resumen tarjeta
                 2. Calcular nueva compra
-                3. Salir `))
+                3. Volver a menu de bancos
+                                             `))
                 
                 switch(opcion){
                     
@@ -126,4 +161,13 @@ function ingresarSistema()
             }
         }
     }
+}
+
+
+function nuevaCompra(){
+    let precio = Number(prompt('Ingrese monto de compra:'))
+    let cuotas = Number(prompt('Ingrese cantidad de cuotas:'))
+    let recargo = Number(prompt('Ingrese % recargo de compra:'))
+    let resultado = (precio*(1.+(recargo/100)))/ cuotas
+    alert (resultado)
 }
