@@ -4,15 +4,16 @@
 //  Contraseña: 1234
 
 class Banco{
-    constructor(id,nombre)
+    constructor(id,nombre,monto)
     {
         this.id = id
         this.nombre = nombre
+        this.monto = monto
     }
 }
-const banco1 = new Banco(1, "Galicia")
-const banco2 = new Banco(2, "Macro")
-const banco3 = new Banco(3,"Nacion")
+const banco1 = new Banco(1, "Galicia", 10.000)
+const banco2 = new Banco(2, "Macro", 15.000)
+const banco3 = new Banco(3,"Nacion", 0)
 
 const bancos = [banco1,banco2,banco3];
 
@@ -79,17 +80,19 @@ function mostrarMenuBancos()
 
 function agregarBanco()
 {
-    let id = prompt('Ingrese el id:')
+    let id = Number(prompt('Ingrese el id:'))
     let nombre = prompt('Ingrese nombre del banco:')
-
-    let banco = new Banco(id,nombre)
+    let monto =Number(prompt('Ingresa el monto que tiene depositado:'))
+    let banco = new Banco(id,nombre,monto)
     bancos.push(banco)
     
 }
 
 
 function buscarBanco(){
-    
+    let nombre = prompt('Ingresa el nombre que quieres buscar')
+    let encontrado = bancos.filter((banco) => usuario.nombre.toLowerCase().indexOf(nombre.toLocaleLowerCase())!==-1)
+    console.log('Se encontro el usuario:', encontrado)
 }
 
 
@@ -109,7 +112,21 @@ function eliminarBanco(){
 
 
 function modificarBanco(){
+    let id = Number(prompt('Ingrese el id del banco que desea modificar:'))
+    let existe = bancos.some((banco) => banco.id === id)
+    if(existe)
+    {
+        let encontrado = bancos.find((banco)=>banco.id === id)
+        let nuevoMonto = Number(prompt('Ingrese nuevo monto:'))
 
+        encontrado.monto = nuevoMonto
+        alert('Usuario modificado con exito')
+
+    }
+    else
+    {
+        alert('Usuario no encontrado')
+    }
 }
 
 
