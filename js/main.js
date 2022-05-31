@@ -1,26 +1,9 @@
-// Simulador de cuotas sobre tarjeta de credito 
 
 //  Usuario: JuanAlba
 //  Contraseña: 1234
 
 
-
-class Banco{
-    constructor(id,nombre,monto)
-    {
-        this.id = id
-        this.nombre = nombre
-        this.monto = monto
-    }
-}
-const banco1 = new Banco(1, "Galicia", 10.000)
-const banco2 = new Banco(2, "Macro", 15.000)
-const banco3 = new Banco(3,"Nacion", 0)
-
-const bancos = [banco1,banco2,banco3];
-
-
-mostrarMenuBancos();
+crearMenu()
 
 function mostrarMenuBancos()
 {
@@ -35,46 +18,6 @@ function mostrarMenuBancos()
         5. Listar bancos
         6. Ingresar a sistema
         7. Salir`))
-
-        switch(seleccion)
-        {
-            case 1:
-                {
-                    agregarBanco();
-                    break;
-                }
-            case 2:
-                {
-                    buscarBanco();
-                    break;
-                }
-            case 3:
-                {
-                    eliminarBanco();
-                    break;
-                }
-            case 4:
-                {
-                    modificarBanco();
-                    break;
-                }
-            case 5:
-                {
-                    listarBancos();
-                    break;
-                }
-            case 6:
-                {
-                    ingresarSistema();
-                    break;
-                }
-            default:
-                {
-                    alert("Opcion Invalida")
-                    break;
-                }
-        }
-
     }
     
 }
@@ -93,8 +36,9 @@ function agregarBanco()
 
 function buscarBanco(){
     let nombre = prompt('Ingresa el nombre que quieres buscar')
-    let encontrado = bancos.filter((banco) => usuario.nombre.toLowerCase().indexOf(nombre.toLocaleLowerCase())!==-1)
+    let encontrado = bancos.filter((banco) => banco.nombre.toLowerCase().indexOf(nombre.toLocaleLowerCase())!==-1)
     console.log('Se encontro el usuario:', encontrado)
+    return encontrado
 }
 
 
@@ -132,11 +76,7 @@ function modificarBanco(){
 }
 
 
-function listarBancos(){
-    bancos.forEach(banco => {
-        console.log(banco)
-    });
-}
+
 
 
 function ingresarSistema()
