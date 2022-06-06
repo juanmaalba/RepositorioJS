@@ -21,7 +21,7 @@ function crearMenu()
      {
         boton.addEventListener("click", ()=>{
             agregarBanco();
-            listarBancos();
+            listarBancos(bancos);
         })
      }
      else if(opcion==="Buscar banco")
@@ -37,6 +37,18 @@ function crearMenu()
      document.body.appendChild(boton);
      });
 }
+
+function agregarBanco()
+{
+    let id = Number(prompt('Ingrese el id:'))
+    let nombre = prompt('Ingrese nombre del banco:')
+    let monto =Number(prompt('Ingresa el monto que tiene depositado:'))
+    let banco = new Banco(id,nombre,monto)
+    bancos.push(banco)
+    alert('Banco Ingresado correctamente')
+    localStorage.setItem('Bancos', JSON.stringify(bancos))
+}
+
 function listarBancos(listaBancos)
 {
    let miLista = document.querySelector("#listaBancos");

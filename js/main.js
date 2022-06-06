@@ -23,16 +23,6 @@ function mostrarMenuBancos()
 }
 //                    FUNCIONES                        //
 
-function agregarBanco()
-{
-    let id = Number(prompt('Ingrese el id:'))
-    let nombre = prompt('Ingrese nombre del banco:')
-    let monto =Number(prompt('Ingresa el monto que tiene depositado:'))
-    let banco = new Banco(id,nombre,monto)
-    bancos.push(banco)
-    
-}
-
 
 function buscarBanco(){
     let nombre = prompt('Ingresa el nombre que quieres buscar')
@@ -40,7 +30,6 @@ function buscarBanco(){
     console.log('Se encontro el usuario:', encontrado)
     return encontrado
 }
-
 
 function eliminarBanco(){
     let id = Number(prompt('Ingrese el id a eliminar:'))
@@ -55,7 +44,6 @@ function eliminarBanco(){
 
     }
 }
-
 
 function modificarBanco(){
     let id = Number(prompt('Ingrese el id del banco que desea modificar:'))
@@ -74,10 +62,6 @@ function modificarBanco(){
         alert('Usuario no encontrado')
     }
 }
-
-
-
-
 
 function ingresarSistema()
 {   
@@ -108,14 +92,21 @@ function ingresarSistema()
                     case 1: 
                         {
                             alert('No existen resumenes en estos momentos.')
+                            break
                         }
                     case 2:
                         {
                             nuevaCompra();
+                            break
+                        }
+                    case 3:
+                        {
+                            break
                         }
                     default:
                         {
                             alert('Opcion Invalida')
+                            break
                         }
             }
         }
