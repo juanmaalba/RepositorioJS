@@ -1,6 +1,6 @@
 function crearMenu()
 {
-     let opciones = ["Iniciar sistema","Listar Bancos", "Agregar banco", "Buscar banco"]
+     let opciones = ["Iniciar sistema","Listar Bancos", "Agregar banco", "Buscar banco", "Recomiendanos"]
      opciones.forEach((opcion)=>{
      const boton = document.createElement("button");
      boton.innerHTML=opcion;
@@ -31,6 +31,12 @@ function crearMenu()
            
             listarBancos(filtrados);
 
+        })
+     }
+     else if(opcion==="Recomiendanos")
+     {
+        boton.addEventListener("click", ()=>{
+            sweetAlert();
         })
      }
      
@@ -101,4 +107,28 @@ function listarBancos(listaBancos)
    });
 
    document.body.appendChild(miLista);
+}
+function sweetAlert()
+{
+    
+    Swal.fire({
+    title: 'Quieres recomendarnos?',
+    text: "Puedes darnos 5 estrellas en google!",
+    
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si!! 5 estrellas',
+    cancelButtonText: 'A trabajar más..',
+    }).then((result) => {
+    if (result.isConfirmed) {
+        Swal.fire(
+        'Confirmado! ',
+        'Nos otorgaste 5 estrellas.',
+        'success'
+        )
+    }
+    
+    })
+    
 }
